@@ -1,7 +1,5 @@
 ﻿// printfn "Hello world!"
 
-
-// ------Задание #3------
 open System
 
 //Площадь круга
