@@ -1,5 +1,7 @@
 ﻿// printfn "Hello world!"
 
+
+// ------Задание #3------
 open System
 
 //Площадь круга
@@ -43,3 +45,5 @@ match Console.ReadLine() with
 | "1" -> mainSuperposition()
 | "2" -> mainCurrying()
 | _ -> printfn "Неверный ввод"
+
+
