@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Rrj4qGzbwlU=",
+  "success": true,
+  "projectFilePath": "D:\\GitHub\\Functional_And_Logical_Programming\\welcome_to_F#\\welcome_to_F#.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\sl1pp\\.nuget\\packages\\fsharp.core\\9.0.201\\fsharp.core.9.0.201.nupkg.sha512"
+  ],
+  "logs": []
+}
