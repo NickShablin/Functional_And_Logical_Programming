@@ -12,3 +12,9 @@ let finalFunc digit funct init funcItsNeed=
         | _ -> res
 
     step digit init
+
+
+System.Console.WriteLine(finalFunc 92722 (fun x y -> x+y) 0 (fun x -> match x%2 with |1 -> true |0->false))
+System.Console.WriteLine(finalFunc 848 (fun x y -> x*y) 1 (fun x -> true))
+System.Console.WriteLine(finalFunc 777 (fun x y -> match x>y with| true -> x| false -> y) 0 (fun x -> match x with |x when x>5 -> true|_ -> false))
+System.Console.WriteLine(finalFunc 911 (fun x y -> match x<y with| true -> x| false -> y) 9 (fun x -> false))
