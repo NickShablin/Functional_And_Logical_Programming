@@ -1,5 +1,3 @@
-﻿// printfn "Hello world!"
-
 open System
 
 //Площадь круга
