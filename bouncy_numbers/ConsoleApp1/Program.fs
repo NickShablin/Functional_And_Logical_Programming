@@ -1,28 +1,31 @@
 ﻿open System
 
-let isBouncy n =
-    if n < 100 then 
-        false
-    else
-        let s = n.ToString()
-        let len = s.Length
-        let rec check i hasInc hasDec =
-            if hasInc && hasDec then 
-                true
-            elif i = len - 1 then 
-                hasInc && hasDec
-            else
-                let a = s.[i]
-                let b = s.[i+1]
-                if b > a then 
-                    check (i+1) true hasDec
-                elif b < a then
-                    check (i+1) hasInc true
-                else
-                    check (i+1) hasInc hasDec
-        check 0 false false
+
+let isBouncy number =
+
+    match number < 100 with
+    | true -> false
+    | false ->
+        let digits = number.ToString()
+        let digitCount = digits.Length
+        let rec checkDigits index hasInc hasDec =
+
+            match (hasInc, hasDec, index = digitCount - 1) with
+            | (true, true, _) -> true
+            | (_, _, true) -> hasInc && hasDec
+            | _ ->
+                let currentDigit = digits.[index]
+                let nextDigit = digits.[index + 1]
+
+                match (nextDigit > currentDigit, nextDigit < currentDigit) with
+                | (true, false) -> checkDigits (index + 1) true hasDec
+                | (false, true) -> checkDigits (index + 1) hasInc true
+                | _ -> checkDigits (index + 1) hasInc hasDec
+
+        checkDigits 0 false false
 
 
 let number = 1234321
 let result = isBouncy number
 printfn "%d, %b" number result
+
