@@ -8,8 +8,8 @@ let isBouncy number =
     | false ->
         let digits = number.ToString()
         let digitCount = digits.Length
-        let rec checkDigits index hasInc hasDec =
 
+        let rec checkDigits index hasInc hasDec =
             match (hasInc, hasDec, index = digitCount - 1) with
             | (true, true, _) -> true
             | (_, _, true) -> hasInc && hasDec
@@ -25,7 +25,20 @@ let isBouncy number =
         checkDigits 0 false false
 
 
-let number = 1234321
-let result = isBouncy number
-printfn "%d, %b" number result
+let rec findNumber currentNumber currentBouncyCount =
+
+    match 100 * currentBouncyCount = 99 * currentNumber with
+    | true -> currentNumber
+    | false ->
+        let nextNumber = currentNumber + 1
+
+        let nextBouncyCount = 
+            match isBouncy nextNumber with
+            | true -> currentBouncyCount + 1 
+            | false -> currentBouncyCount
+
+        findNumber nextNumber nextBouncyCount
+
+let answer = findNumber 21780 19602
+printfn "Наименьшее число, для которого доля прыгучих чисел точно равна 99%% : %d" answer
 
