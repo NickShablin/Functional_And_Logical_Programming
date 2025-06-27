@@ -2,7 +2,8 @@ can_topo_sort(Edges) :-
     retractall(edge(_,_)),
     assert_edges(Edges),
     (   cycle
-    ->  writeln('can not make a topological sort - a cycle found')
+    ->  writeln('can not make a topological sort - a cycle found'),
+        fail 
     ;   writeln('can make a topological sort')
     ).
 
@@ -18,9 +19,9 @@ cycle :-
     dfs_cycle(N, []),
     !. 
 
-
+% Исправленный DFS для поиска циклов
 dfs_cycle(N, Path) :-
-    member(N, Path), !.
+    member(N, Path), !. 
 dfs_cycle(N, Path) :-
-    edge(N, M),   
+    edge(N, M),      
     dfs_cycle(M, [N|Path]). 
