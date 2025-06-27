@@ -11,3 +11,16 @@ assert_edges([X-Y | Es]) :-
     assert(edge(X,Y)),
     assert_edges(Es).
 
+cycle :-
+    findall(N, (edge(N,_); edge(_,N)), Ns0),
+    sort(Ns0, Ns),
+    member(N, Ns),
+    dfs_cycle(N, []),
+    !. 
+
+
+dfs_cycle(N, Path) :-
+    member(N, Path), !.
+dfs_cycle(N, Path) :-
+    edge(N, M),   
+    dfs_cycle(M, [N|Path]). 
